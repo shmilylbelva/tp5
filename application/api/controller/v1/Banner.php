@@ -1,27 +1,29 @@
 <?php
 /**
- * Created by shmilyelva
- * Date: 2018/9/6
- * Time: 下午10:06
+ * Created by PhpStorm.
+ * User: admin
+ * Date: 2018-09-06
+ * Time: 16:05
  */
 
 namespace app\api\controller\v1;
 
-//use app\api\validate\DataValidate;
+use app\api\validate\DataValidate;
+
 class Banner
 {
-    public function getBanner($id){
-        $data = [
-            'name' => 'shmilyelva',
-            'id' => $id,
-            'email' => 'thinkphp@qq.com',
-            'class' => 'qwe'
-        ];
-
-        $validate = new \app\api\validate\DataValidate();
-        $res = $validate->scene('false')->check($data);
-        if(!$res){
-            print_r($validate->getError());
+    /**
+     * 获取指定id的banner信息
+     * @url /banner/:id
+     * @http GET
+     * @param $id abnner的id号
+     */
+    public function getBanner($id='1')
+    {
+        $validate = new DataValidate;
+        if($validate->scene('test')->goCheck()){
+            echo '通过';
         }
+
     }
 }
