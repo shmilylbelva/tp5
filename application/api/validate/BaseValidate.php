@@ -15,7 +15,6 @@ class BaseValidate extends Validate
 {
     public function goCheck(){
         $param = request()->param();
-        print_r($param);
         $result = $this->check($param);
         if(!$result){
             $error = $this->error;

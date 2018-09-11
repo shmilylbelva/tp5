@@ -9,6 +9,7 @@
 namespace app\api\controller\v1;
 
 use app\api\validate\DataValidate;
+use app\lib\exception\MissException;
 
 class Banner
 {
@@ -23,6 +24,11 @@ class Banner
         $validate = new DataValidate;
         if($validate->scene('test')->goCheck()){
             echo '通过';
+        }else{
+            throw new MissException([
+                'msg' => '请求banner不存在',
+                'errorCode' => 40000
+            ])
         }
 
     }
